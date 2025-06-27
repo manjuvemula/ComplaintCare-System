@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ComplaintCare - Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #a9b6bc;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .navbar {
+      background-color: #1c1c1c;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar .left {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .navbar .left .greeting {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .navbar .right button {
+      background-color: #d9534f;
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .navbar .right button:hover {
+      background-color: #c9302c;
+    }
+    .form-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .form-box {
+      background-color: #1c1c1c;
+      color: white;
+      padding: 30px;
+      border-radius: 8px;
+      width: 500px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    .form-box input,
+    .form-box select,
+    .form-box textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      border: none;
+      font-size: 14px;
+    }
+    .form-box .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .form-box button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-box button:hover {
+      background-color: #218838;
+    }
+    footer {
+      background-color: #1c1c1c;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+      margin-left: 10px;
+      font-size: 14px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="left">
+      <span class="greeting" id="usernameGreeting">Hi, </span>
+      <a href="registration.html">Complaint Register</a>
+<a href="complaintdetails.html">Status</a>
+<a href="agent.html">Agent</a>
+
+
+    </div>
+    <div class="right">
+      <button onclick="logout()">LogOut</button>
+    </div>
+  </nav>
+
+  <div class="form-container">
+    <div class="form-box">
+      <form id="complaintForm">
+        <div class="row">
+          <input type="text" id="name" placeholder="Name" required />
+          <input type="text" id="address" placeholder="Address" required />
+        </div>
+        <div class="row">
+          <input type="text" id="city" placeholder="City" required />
+          <input type="text" id="state" placeholder="State" required />
+        </div>
+        <div class="row">
+          <input type="text" id="pincode" placeholder="Pincode" required />
+          <select id="status" required>
+            <option value="" disabled selected>Status</option>
+            <option value="Pending">Pending</option>
+            <option value="Under Processing">Under Processing</option>
+            <option value="Resolved">Resolved</option>
+          </select>
+        </div>
+        <textarea id="description" rows="3" placeholder="Description" required></textarea>
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    ComplaintCare<br />&copy; 2025
+  </footer>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const rawUser = localStorage.getItem("loggedInUser");
+
+    if (!rawUser) {
+      alert("Please login first.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    let userData;
+    try {
+      userData = JSON.parse(rawUser);
+    } catch (err) {
+      console.error("Corrupt session JSON:", err);
+      localStorage.removeItem("loggedInUser");
+      alert("Session error. Please login again.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    if (!userData.name) {
+      alert("Invalid session data. Please login again.");
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "login.html";
+      return;
+    }
+
+    document.getElementById("usernameGreeting").textContent = `Hi, ${userData.name}`;
+  });
+
+  // ✅ Complaint form submit handler
+  document.getElementById("complaintForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const complaintData = {
+      name: document.getElementById("name").value,
+      address: document.getElementById("address").value,
+      city: document.getElementById("city").value,
+      state: document.getElementById("state").value,
+      pincode: document.getElementById("pincode").value,
+      status: document.getElementById("status").value,
+      description: document.getElementById("description").value,
+    };
+
+    try {
+      const res = await fetch("http://localhost:5000/api/complaints", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(complaintData),
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        alert(result.message || "The complaint has been recorded successfully");
+        document.getElementById("complaintForm").reset();
+      } else {
+        alert("Error: " + result.message);
+      }
+    } catch (err) {
+      alert("Server error. Please try again.");
+      console.error(err);
+    }
+  });
+</script>
+
+
+</body>
+</html>

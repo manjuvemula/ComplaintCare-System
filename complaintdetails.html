@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ComplaintCare - Admin Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #aab6c4;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+    }
+
+    header .left a {
+      color: white;
+      margin-left: 15px;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    header .left a:hover {
+      text-decoration: underline;
+      color: #00d1ff;
+    }
+
+    header .right button {
+      background-color: #e74c3c;
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .page-heading {
+      text-align: left;
+      padding: 20px 40px 0 40px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px 20px 40px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      padding: 20px;
+    }
+
+    .card strong {
+      font-size: 18px;
+    }
+
+    .card p {
+      margin: 5px 0;
+    }
+
+    .message-box {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 15px;
+      border-radius: 6px;
+    }
+
+    .message-box h3 {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .message {
+      background-color: #f1f1f1;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+    }
+
+    .message small {
+      display: block;
+      font-size: 12px;
+      color: #555;
+      margin-top: 5px;
+    }
+
+    .send-message {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .send-message input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px 0 0 4px;
+    }
+
+    .send-message button {
+      padding: 8px 15px;
+      background-color: #2ecc71;
+      border: none;
+      color: white;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="left">
+      <strong>Hi, Admin</strong>
+      <a href="C:\Users\VEMA\Downloads\ComplaintCare System\Dashboard.html">Complaint Register</a>
+      <a href="C:\Users\VEMA\Downloads\ComplaintCare System\complaintdetails.html">Status</a>
+    </div>
+    <div class="right">
+      <button>LogOut</button>
+    </div>
+  </header>
+
+  <!-- Left-aligned heading -->
+  <div class="page-heading">
+     Complaint Details
+  </div>
+
+  <!-- Complaint Cards -->
+  <div class="cards">
+    <!-- Card: Manju Sri -->
+    <div class="card">
+      <p><strong>Name:</strong> Manju Sri</p>
+      <p><strong>Address:</strong> MG Road</p>
+      <p><strong>City:</strong> Hyderabad</p>
+      <p><strong>State:</strong> Telangana</p>
+      <p><strong>Pincode:</strong> 500001</p>
+      <p><strong>Comment:</strong> Issue with electricity</p>
+      <p><strong>Status:</strong> Pending</p>
+
+      <div class="message-box">
+        <h3>Message Box</h3>
+        <div class="message">Manju Sri: Hello<br><small>10:15 AM, 26/06/2025</small></div>
+        <div class="message">Manju Sri: Please resolve<br><small>10:30 AM, 12/06/2025</small></div>
+        <div class="send-message">
+          <input type="text" placeholder="Message" />
+          <button>Send</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card: Bhuvana -->
+    <div class="card">
+      <p><strong>Name:</strong> Bhuvana</p>
+      <p><strong>Address:</strong> Gandhi Nagar</p>
+      <p><strong>City:</strong> Bengaluru</p>
+      <p><strong>State:</strong> Karnataka</p>
+      <p><strong>Pincode:</strong> 560001</p>
+      <p><strong>Comment:</strong> Road damage issue</p>
+      <p><strong>Status:</strong> Under Processing</p>
+
+      <div class="message-box">
+        <h3>Message Box</h3>
+        <div class="message">Bhuvana: Any update?<br><small>11:00 AM, 13/06/2025</small></div>
+        <div class="send-message">
+          <input type="text" placeholder="Message" />
+          <button>Send</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card: Vidhya -->
+    <div class="card">
+      <p><strong>Name:</strong> Vidhya</p>
+      <p><strong>Address:</strong> Lake View</p>
+      <p><strong>City:</strong> Chennai</p>
+      <p><strong>State:</strong> Tamil Nadu</p>
+      <p><strong>Pincode:</strong> 600001</p>
+      <p><strong>Comment:</strong> Water supply issue</p>
+      <p><strong>Status:</strong> Solved</p>
+
+      <div class="message-box">
+        <h3>Message Box</h3>
+        <div class="message">Vidhya: Thank you!<br><small>09:45 AM, 13/06/2025</small></div>
+        <div class="send-message">
+          <input type="text" placeholder="Message" />
+          <button>Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

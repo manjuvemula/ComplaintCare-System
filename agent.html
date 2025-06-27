@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agent Management - Admin</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #b6c3cb;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .left {
+      display: flex;
+      align-items: center;
+    }
+
+    header .left strong {
+      font-size: 1.2rem;
+      margin-right: 20px;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+      color: #00d1ff;
+    }
+
+    header .right button {
+      background-color: #c0392b;
+      border: none;
+      padding: 8px 15px;
+      color: white;
+      font-size: 14px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 80%;
+      margin: 50px auto;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      font-size: 16px;
+    }
+
+    th {
+      background-color: #f5f5f5;
+    }
+
+    .btn-update {
+      background-color: #f1c40f;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      color: black;
+      cursor: pointer;
+      margin-right: 8px;
+    }
+
+    .btn-delete {
+      background-color: #e74c3c;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="left">
+      <strong>Hi Admin</strong>
+      <nav>
+        <a href="C:\Users\VEMA\Downloads\ComplaintCare System\Dashboard.html">Dashboard</a>
+        <a href="C:\Users\VEMA\Downloads\ComplaintCare System\login.html">User</a>
+        <a href="C:\Users\VEMA\Downloads\ComplaintCare System\agent.html">Agent</a>
+      </nav>
+    </div>
+    <div class="right">
+      <button>Log out</button>
+    </div>
+  </header>
+
+  <!-- Agent Table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Raamu</td>
+        <td>raamu@gmail.com</td>
+        <td>9876543210</td>
+        <td>
+          <button class="btn-update">Update</button>
+          <button class="btn-delete">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
